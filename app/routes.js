@@ -1,6 +1,7 @@
 var jwt = require('express-jwt');
+var config = require('../config/config');
 var auth = jwt({
-  secret: 'MY_SECRET',
+  secret: config.secret,
   userProperty: 'payload'
 });
 module.exports = function (router) {

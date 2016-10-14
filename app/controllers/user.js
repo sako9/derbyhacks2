@@ -47,26 +47,23 @@ module.exports = {
             });
         },
         login: (req,res) =>{
-            passport.authenticate('local', function(err, user, info){
+              passport.authenticate('local', function(err, user, info){
                 var token;
-                
-                //If passport throws/catches an error
-                if (err){
-                    res.status(404).json(err);
-                    return;
+
+                // If Passport throws/catches an error
+               if(err){ 
+                   res.send(err);
+               }else if(user){
+                  token = user.generateJwt();
+                  res.status(200);
+                  res.json({
+                    "token" : token
+                  });
+                } else {
+                  // If user is not found
+                  res.status(401).json(info);
                 }
-                //if a user is found
-                if(user){
-                    token = user.generateJwt();
-                    res.status(200);
-                    res.json({
-                        "token":token
-                    });
-                }else {
-                    // If user is not found
-                    res.status(401).json(info);
-                }
-            })(req,res);
+              })(req, res);
         
         },
         

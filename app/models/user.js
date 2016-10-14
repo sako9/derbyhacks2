@@ -1,8 +1,9 @@
 var mongoose = require("mongoose");
+var config = require("../../config/config");
 var jwt = require('jsonwebtoken');
 var Schema = mongoose.Schema;
 var bcrypt = require("bcrypt");
-var SALT_WORK_FACTOR = 10;
+var SALT_WORK_FACTOR = config.salt;
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -47,7 +48,7 @@ UserSchema.methods.generateJwt = function() {
     role: this.role,
     email: this.email,
     exp: parseInt(expiry.getTime() / 1000),
-  }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
+  }, config.secret); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
 
