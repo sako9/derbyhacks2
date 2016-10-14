@@ -8,10 +8,13 @@
     "express": "^4.13.4",
     "express-jwt": "^5.1.0",
     "jsonwebtoken": "^7.1.9",
+    "marked": "^0.3.6",
     "method-override": "~2.0.2",
     "mongoose": "^4.4.8",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sendgrid": "1.9.x",
+    "validate": "^3.0.1"
   }
 }

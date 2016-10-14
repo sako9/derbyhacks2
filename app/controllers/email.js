@@ -1,4 +1,4 @@
-var Email = require('./model');
+var Email = require('../models/email');
 
 module.exports = {
 
@@ -8,12 +8,12 @@ module.exports = {
   * Auth -> admin
   */
   post: (req, res) => {
-    let errors = Email.validate(req.body);
+    var errors = Email.validate(req.body);
     if (errors.length) return res.multiError(errors, 400);
-    let email = new Email(req.body);
+    var email = new Email(req.body);
 
     email.send(true, (err, email) => {
-      if (err) return res.internalError();
+      if(err) return res.send(err);
       return res.status(201).json(email);
     });
   },
@@ -27,7 +27,7 @@ module.exports = {
     Email
       .find()
       .exec((err, emails) => {
-        if (err) return res.internalError();
+        if(err) return res.send(err);
         return res.status(200).json({emails: emails});
       });
   },
@@ -41,8 +41,8 @@ module.exports = {
     Email
       .findByIdAndRemove(req.params.id)
       .exec((err, email) => {
-        if (err) res.internalError();
-        let response = {
+        if(err) return res.send(err);
+        var response = {
           _id: email._id
         };
         return res.status(200).json(response);

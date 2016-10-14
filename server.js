@@ -71,6 +71,14 @@ if (app.get('env') === 'development') {
     });
 }
 
+app.get('/handle_mlh_callback', function (req, res) {
+   console.log(req.query)
+   console.log(req.params)
+   console.log(req)
+   
+  res.end(JSON.stringify(req.query, null, 2))
+})
+
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {

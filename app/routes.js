@@ -22,5 +22,6 @@ module.exports = function (router) {
     router.post('/apply', auth, application.create);
     router.get('/application', auth, application.getOne);
     router.patch('/application', auth, application.update);
+
     
 };

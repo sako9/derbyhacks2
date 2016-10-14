@@ -19,7 +19,7 @@ var ApplicationSchema = new Schema({
     school : {type: String, required: true},
     major : {type: String, required: true},
     gender : {type: String, required: true},
-    shirtSize : {type: String, enum: ["Women's - XS", "Women's - S", "Women's - M", "Women's - L", "Women's - XL","Men's - XS", "Men's - S", "Men's - M", "Men's - L", "Men's - XL"]},
+    shirtSize : {type: String, enum: ["Women's - XS", "Women's - S", "Women's - M", "Women's - L", "Women's - XL","Men's - XS", "Men's - S", "Men's - M", "Men's - L", "Men's - XL"], required: true},
     dietary : {type: String},
     age : {type: Number, required: true},
     grade : {type: String, required: true},

@@ -25,7 +25,7 @@ formCtrl.controller('formController',function($scope,$http,filepickerService,aut
     //function to process the form
     $scope.processForm = function(form){
         var headers = { Authorization: 'Bearer '+ authentication.getToken() };
-        console.log($scope.appData);
+        console.log(form);
         if(!$scope.update){
             $http.post('/v1.0/api/apply', $scope.appData,{ headers: headers })
                 .success(function(data){

@@ -2,7 +2,8 @@
        <div class="card-header">
           <div class="row">
                <h3 style="display: inline-block;">DerbyHacks</h3>
-                <button style="float:right;" id="singlebutton" name="singlebutton" class="btn btn-primary">Import from MyMlh</button> 
+                <!--<a style="float:right;" href="http://my.mlh.io/oauth/authorize?client_id=7dc6f06aaeaf03a19cf18bd30e516a167a3ba51d516a04c7bf3a683080a2add3
+&amp;redirect_uri=http://localhost:3000/handle_mlh_callback;response_type=token&scope=email+education+birthday" id="singlebutton" name="singlebutton" class="btn btn-primary">Import from MyMlh</a>--> 
            </div>
                 
         </div>
@@ -13,24 +14,36 @@
 
                 <div class="form-group row">
                    <div class="col-md-6">
-                        <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" name="firstname" ng-model="appData.firstName" required>
+                        <label for="firstName">*First Name</label>
+                        <input type="text" class="form-control" name="firstName" ng-model="appData.firstName" required>
+                        <div ng-show="applicationform.firstName.$error.mongoose" style="color: red">
+                            {{applicationform.firstName.$error.mongoose}}
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="lastname">Last Name</label>
-                        <input type="text" class="form-control" name="lastname" ng-model="appData.lastName" required>
+                        <label for="lastName">*Last Name</label>
+                        <input type="text" class="form-control" name="lastName" ng-model="appData.lastName" required>
+                        <div ng-show="applicationform.lastName.$error.mongoose" style="color: red">
+                            {{applicationform.lastName.$error.mongoose}}
+                        </div>
                     </div>
                 </div>
 
 
                 <div class="form-group row">
                    <div class="col-md-6">
-                        <label for="school">School</label>
+                        <label for="school">*School</label>
                         <input type="text" class="form-control" name="school" ng-model="appData.school" required>
+                        <div ng-show="applicationform.school.$error.mongoose" style="color: red">
+                            {{applicationform.school.$error.mongoose}}
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="major">Major</label>
+                        <label for="major">*Major</label>
                         <input type="text" class="form-control" name="major" ng-model="appData.major" required>
+                        <div ng-show="applicationform.major.$error.mongoose" style="color: red">
+                            {{applicationform.major.$error.mongoose}}
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -43,10 +56,13 @@
                             <option value="I prefer not to say">I prefer not to say</option>
                             <option value="Other">Other</option>
                        </select>
+                       <div ng-show="applicationform.gender.$error.mongoose" style="color: red">
+                            {{applicationform.gender.$error.mongoose}}
+                        </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="shirtsize">*Shirt Size</label>
-                        <select class="form-control" name="shirtsize" ng-model="appData.shirtSize" required>
+                        <label for="shirtSize">*Shirt Size</label>
+                        <select class="form-control" name="shirtSize" ng-model="appData.shirtSize" required>
                             <option value="">Select a Size</option>
                             <option value="Women's - XS">Women's - XS</option>
                             <option value="Women's - S">Women's - S</option>
@@ -59,6 +75,9 @@
                             <option value="Unisex - L">Unisex - L</option>
                             <option value="Unisex - XL">Unisex - XL</option>
                         </select>
+                        <div ng-show="applicationform.shirtSize.$error.mongoose" style="color: red">
+                            {{applicationform.shirtSize.$error.mongoose}}
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <label for="dietary">Dietarty Restrictions</label>
@@ -70,6 +89,9 @@
                     <div class="col-md-4">
                         <label for="age">*Age</label>
                         <input type="number" class="form-control" name="age" ng-model="appData.age" placeholder="18" required>
+                        <div ng-show="applicationform.age.$error.mongoose" style="color: red">
+                            {{applicationform.age.$error.mongoose}}
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <label for="grade">*Grade</label>
@@ -81,10 +103,16 @@
                             <option value="Not Currently a Student">Not Currently a Student</option>
                             <option value="Other">Other</option>
                         </select>
+                        <div ng-show="applicationform.grade.$error.mongoose" style="color: red">
+                            {{applicationform.grade.$error.mongoose}}
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <label for="phone">*Phone</label>
                         <input type="tel" class="form-control" name="phone" ng-model="appData.phone" placeholder="555-555-5555" required>
+                        <div ng-show="applicationform.phone.$error.mongoose" style="color: red">
+                            {{applicationform.phone.$error.mongoose}}
+                        </div>
                     </div>
                 </div>
 
@@ -137,12 +165,18 @@
                         <input type="checkbox" name="conduct" ng-model="appData.conduct" required>
                         I agree to abide by Major League Hacking's <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf"  target="_blank">Code of Conduct</a>
                     </label>
+                    <div ng-show="applicationform.conduct.$error.mongoose" style="color: red">
+                            {{applicationform.conduct.$error.mongoose}}
+                        </div>
                 </div>
                 <div class="checkbox">
                     <label>*
                         <input type="checkbox" name="policy" ng-model="appData.policy" required>
                         We participate in Major League Hacking (MLH) as a MLH Member Event. By checking this box, you authorize us to share certain application/registration information for event administration, ranking, MLH administration, pre and post-event informational e-mails, and occasional messages about hackathons in line with the<a href="https://mlh.io/privacy" target="_blank"> MLH Privacy Policy</a>
                     </label>
+                    <div ng-show="applicationform.policy.$error.mongoose" style="color: red">
+                            {{applicationform.policy.$error.mongoose}}
+                        </div>
                 </div>
                 <div class="text-xs-center" style="margin-top:5rem"> 
                     <button type="submit" name="submit" class="btn btn-primary">Submit!</button> 

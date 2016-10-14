@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var User = require('../models/user');
 var Application = require('../models/application');
+var Email = require('../models/email');
 
 var _APPROVED = 'approved',
     _DENIED = 'denied',
@@ -73,6 +74,14 @@ module.exports = {
                                 user._application = newApp._id;
                                 user.save(function(err){
                                     if(err) return res.send(err);
+                                    var email = new Email({
+                                        subject: 'Your DerbyHacks Application',
+                                        body: '# Thanks for applying to DerbyHacks!\nWe appreciate your interest.',
+                                        recipients: {
+                                          emails: [user.email]
+                                        }
+                                      });
+                                      email.send(false);
                                     console.log("this happend")
                                 });
                                return res.status(200).json({

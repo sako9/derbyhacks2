@@ -1,9 +1,9 @@
 
 var mongoose = require('mongoose');
- schema = require('validate');
-var config = rootRequire('config/config');
+var schema = require('validate');
+var config = require('../../config/config');
 var sendgrid = require('sendgrid')(config.sendgrid.apikey);
-let marked = require('marked');
+var marked = require('marked');
 
 /**
 * Schema
@@ -25,7 +25,7 @@ var EmailSchema = mongoose.Schema({
 */
 EmailSchema.methods.send = function (save, callback) {
 
-    let message = new sendgrid.Email({
+    var message = new sendgrid.Email({
       from: config.sendgrid.from,
       fromname: config.sendgrid.fromname,
       subject: this.subject,
@@ -33,12 +33,17 @@ EmailSchema.methods.send = function (save, callback) {
       html: marked(this.body)
     });
 
-    for (let address of this.recipients.emails) {
+    for (var address of this.recipients.emails) {
       message.addTo(address);
     }
 
-    sendgrid.send(message);
-
+    sendgrid.send(message, function(err, json){
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Email sent!');
+  }
+});
 
   if (save) {
     this.sent = Date.now();
@@ -51,14 +56,14 @@ EmailSchema.methods.send = function (save, callback) {
 
 };
 
-let Email = mongoose.model('Email', EmailSchema);
+var Email = mongoose.model('Email', EmailSchema);
 
 /**
 * Validate a message
 */
 function validate(email) {
 
-  let test = schema({
+  var test = schema({
     subject: {
       type: 'string',
       required: true,
