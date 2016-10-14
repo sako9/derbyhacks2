@@ -2,7 +2,9 @@ var registerCtrl = angular.module('registerCtrl',[]);
 registerCtrl.controller('registerController',function($scope,$http,$location,authentication,$state){
     // we will store all of our fomr data in this object
     $scope.formData = {};
-    
+    if(authentication.isLoggedIn()){
+        $state.go("form.status");
+    }
     
     //function to process the form
     $scope.processForm = function(form){
