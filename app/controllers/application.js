@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 var User = require('../models/user');
 var Application = require('../models/application');
+
+var _APPROVED = 'approved',
+    _DENIED = 'denied',
+    _WAITLISTED = 'waitlisted',
+    _PENDING = 'pending';
 // App routes
 module.exports = {
 
@@ -30,76 +35,109 @@ module.exports = {
                   "message" : "UnauthorizedError: private profile"
                 });
             }else{
-                 User
-                    .findById(req.payload._id)
-                    .exec(function(err, user) {
-                        if (err) return res.status(500).send('Something broke!');
-                        var newApp = new Application();
-                        //Save it into the DB.
-                        newApp.status = Application.Status.Pending;
-                        newApp.going= false;
-                        newApp.door = false;
-                        newApp.checked = false;
-                        newApp.firstName = req.body.firstname
-                        newApp.lastName = req.body.lastname;
-                        newApp.school = req.body.school;
-                        newApp.major = req.body.major;
-                        newApp.gender = req.body.gender;
-                        newApp.shirtSize = req.body.shirtsize;
-                        newApp.dietary = req.body.dietary
-                        newApp.age = req.body.age;
-                        newApp.grade = req.body.grade;
-                        newApp.phone = req.body.phone;
-                        newApp.special = req.body.special;
-                        newApp.pun = req.body.pun;
-                        newApp.git = req.body.git;
-                        newApp.LinkedIN = req.body.linkedin;
-                        newApp.personal = req.body.personal;
-                        newApp.other = req.body.other;
-                        newApp.resume = req.body.resume;
-                        newApp.conduct = req.body.conduct;
-                        newApp.policy = req.body.policy;
-                        
-                        newApp.validate(function(error){
-                            if(error){
-                                res.json({
-                                    error: error});
-                            }else{
-                                newApp.save(function(err){
-                                    user.application = newApp._id;
-                                    user.save(function(err){
-                                        //Todo: maybe send an email
-                                    });
-                                    res.status(200);
-                                    res.json({
-                                        "_id": user._id,
-                                        "email": user.email,
-                                        "role": user.role,
-                                        "created": user.created,
-                                        "application": newApp
-                                    });
+                 User.findById(req.payload._id).exec(function(err, user) {
+                    if (err) return res.status(500).send('Something broke!');
+                    var newApp = new Application();
+                    //Save it into the DB.
+                    newApp.status = 'pending';
+                    newApp.going= false;
+                    newApp.door = false;
+                    newApp.checked = false;
+                    newApp.firstName = req.body.firstName
+                    newApp.lastName = req.body.lastName;
+                    newApp.school = req.body.school;
+                    newApp.major = req.body.major;
+                    newApp.gender = req.body.gender;
+                    newApp.shirtSize = req.body.shirtSize;
+                    newApp.dietary = req.body.dietary
+                    newApp.age = req.body.age;
+                    newApp.grade = req.body.grade;
+                    newApp.phone = req.body.phone;
+                    newApp.special = req.body.special;
+                    newApp.pun = req.body.pun;
+                    newApp.git = req.body.git;
+                    newApp.LinkedIN = req.body.LinkedIN;
+                    newApp.personal = req.body.personal;
+                    newApp.other = req.body.other;
+                    newApp.resume = req.body.resume;
+                    newApp.conduct = req.body.conduct;
+                    newApp.policy = req.body.policy;
+                    newApp.validate(function(error){
+                        if(error){
+                            res.json({
+                                error: error});
+                        }
+                         else{
+                            newApp.save(function(err){
+                                if(err) return res.send(err);
+                                user._application = newApp._id;
+                                user.save(function(err){
+                                    if(err) return res.send(err);
+                                    console.log("this happend")
                                 });
-                            }
-                        });
+                               return res.status(200).json({
+                                    _id: user._id,
+                                    email: user.email,
+                                    role: user.role,
+                                    created: user.created,
+                                    application: newApp
+                                })
+                            });
+                     }
+                    });
+
+                     
                  });
             }
-                
         },
         
         /*
         * Get a single user based on id.
         */
         getOne: (req, res) =>{
-            if(! req.payload._id || (req.payload.role != "staff" || req.payload.role != "admin")){
+            if(! req.payload._id){
                 res.status(401).json({
                     "message" : "Unauthorized"
                 });
             }else{
-            User.findById(req.params.id, function(err, user){
-                if(err) res.send(err);
-                //If no errors, send it back to the client
-                res.json(user);
-            });
+                                console.log(req.payload._id);
+
+                User.findById(req.payload._id)
+                .populate('_application')
+                .exec((err, user) => {
+                    if(err) res.send(err);
+                    console.log(user);
+                    return res.status(200).json(user);
+                });
+            }
+        },
+        update: (req,res) =>{
+            if (!req.payload._id) {
+                res.status(401).json({
+                  "message" : "UnauthorizedError: private profile"
+                });
+            }else{
+                var newApp = new Application(req.body);
+                newApp.validate(function(error){
+                        if(error){
+                            res.json({
+                                error: error});
+                        }
+                     });
+                User.findByIdAndUpdate(req.payload._id)
+                .exec((err, user) => {
+                    if(err) res.send(err);
+                    Application.findByIdAndUpdate(user._application, newApp, {new: true})
+                    .exec((err,application) => {
+                        return res.status(200).json({
+                            _id: user._id,
+                            email: user.email,
+                            role: user.role,
+                            created: user.created,
+                            application: newApp
+                        })
+                    });
+                });
             }
         }
 };

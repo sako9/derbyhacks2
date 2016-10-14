@@ -20,5 +20,7 @@ module.exports = function (router) {
     
     //application routes
     router.post('/apply', auth, application.create);
+    router.get('/application', auth, application.getOne);
+    router.patch('/application', auth, application.update);
     
 };

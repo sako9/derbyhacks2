@@ -13,7 +13,7 @@ var validateEmail = function(email) {
 var UserSchema = new Schema({
     email: {type: String, required:true, trim:true, lowercase: true, unique:true,validate: [validateEmail, 'Please fill a valid email address']},
     password: { type: String, required: true },
-    application: {type: mongoose.Schema.Types.ObjectId, ref: 'app'},
+    _application: {type: mongoose.Schema.Types.ObjectId, ref: 'app'},
     role: {type: String, enm: ['attendee', 'staff', 'admin'], default: 'attendee'}
 });
 
@@ -21,7 +21,7 @@ UserSchema.pre('save', function(next){
     var user = this;
     
     //has the password only if it has been modified
-    if(!user.isModified('password')) return next;
+    if(!user.isModified('password'))  next();
     
     // generate a salt
     bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {

@@ -3,10 +3,6 @@ loginCtrl.controller('loginController',function($scope,$http,$state,$location, a
 // we will store all of our fomr data in this object
     $scope.loginData = {};
     console.log($scope);
-    if(isLoggedIn){
-        $state.go('form.status');
-    }
-
     
     //function to process the form
     $scope.processForm = function(form){

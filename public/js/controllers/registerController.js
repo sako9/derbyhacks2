@@ -21,6 +21,7 @@ registerCtrl.controller('registerController',function($scope,$http,$location,aut
                         form[key].$error.mongoose = data.error.errors[key].message;   
                     }
                 }else{
+                    console.log(data.token);
                     authentication.saveToken(data.token);
                     $state.go('form.status');
                 }

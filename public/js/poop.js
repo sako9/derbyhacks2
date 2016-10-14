@@ -1,5 +1,5 @@
 // create our angular app and inject ngAnimate and ui-router
-var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','registerCtrl','ngAnimate', 'ui.router','angular-filepicker'])
+var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','registerCtrl','navCtrl','ngAnimate', 'ui.router','angular-filepicker'])
     //Configuring our routes
     .config(function($stateProvider, $urlRouterProvider, filepickerProvider) {
         
@@ -9,8 +9,7 @@ var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','registerCtrl','n
             .state('form', {
                 url: '/form',
                 abstract:true,
-                templateUrl: 'partials/form.html'
-                
+                templateUrl: 'partials/form.html'                
             })
             .state('form.app', {
                 url: '/app',
@@ -29,7 +28,8 @@ var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','registerCtrl','n
             })
             .state('form.status', {
                 url:'/dash', 
-                templateUrl:'partials/status.html'
+                templateUrl:'partials/status.html',
+                controller: 'navController'
             })
             .state('home',{
                 url:'/home',
@@ -46,9 +46,7 @@ var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','registerCtrl','n
 app.run(['$rootScope', '$state', function($rootScope, $state, authentication) {
 
     $rootScope.$on('$stateChangeStart', function(evt, to, params) {
-        if (($state === 'form.status' || $state === 'form.app') && !authentication.isLoggedIn()) {
-        $state.path('form.login');
-      }
+        
       
     });
 }]);

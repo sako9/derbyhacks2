@@ -3,8 +3,9 @@
             <h3>Dash</h3>
         </div>
         <div class="card-block">
-            <h4 class="card-title text-xs-center">Application status {{}}</h4>
+            <h4 class="card-title text-xs-center" style= " font-weight: bold;">Application status : {{application.status}}</h4>
             <div class="text-xs-center" style="margin-top:5rem"> 
+                        <a href class="btn btn-primary" ng-click="logout()">Logout</a>
                         <a ui-sref="form.app" class="btn btn-primary">Update Application</a> 
             </div>
         </div>
