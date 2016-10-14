@@ -10,7 +10,7 @@ var auth = jwt({
     userProperty: 'payload'
 });
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3009;
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
