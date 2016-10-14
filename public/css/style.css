@@ -1,0 +1,103 @@
+/* BASIC Stylings
+=================*/
+
+
+html, body {
+  height:100%;
+}
+
+/* fix navbar */
+
+
+
+/* paralax stylings */
+
+.para-1 {
+    background-image: url('../img/13002372_1111832192200791_1628432005691356884_o.jpg');
+    min-height: 100%;
+
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.para-1{
+
+    /* Create the parallax scrolling effect */
+      position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-position: center;
+   background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.para-1 .cta-content {
+  position: relative;
+  z-index: 1;
+}
+.para-1 .overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* basic styling for entering and leaving */
+/* left and right added to ensure full width */
+#form-views.ng-enter,
+#form-views.ng-leave      { position:absolute; left:30px; right:30px;
+    transition:1s all ease; -moz-transition:1s all ease; -webkit-transition:1s all ease; 
+}
+    
+/* enter animation */
+#form-views.ng-enter            { 
+    -webkit-animation:slideInRight 1s both ease;
+    -moz-animation:slideInRight 1s both ease;
+    animation:slideInRight 1s both ease; 
+}
+
+/* leave animation */
+#form-views.ng-leave            { 
+    -webkit-animation:slideOutLeft 1s both ease;
+    -moz-animation:slideOutLeft 1s both ease;
+    animation:slideOutLeft 1s both ease;   
+}
+
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes slideOutLeft {
+    to      { transform: translateY(-200%); }
+}
+@-moz-keyframes slideOutLeft {  
+    to      { -moz-transform: translateY(-200%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to      { -webkit-transform: translateY(-200%); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateY(200%); }
+    to      { transform: translateY(0); }
+}
+@-moz-keyframes slideInRight {
+    from    { -moz-transform:translateY(200%); }
+    to      { -moz-transform: translateY(0); }
+}
+@-webkit-keyframes slideInRight {
+    from    { -webkit-transform:translateY(200%); }
+    to      { -webkit-transform: translateY(0); }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "derbyhacks",
+  "main": "server.js",
+  "dependencies": {
+    "angular-filepicker": "^1.1.4",
+    "angular": "^1.5.2",
+    "angular-route": "^1.5.2",
+    "angular-animate": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "filepicker-js-bower": "filepicker-js#^2.4.17",
+    "angular-material": "^1.1.1",
+    "font-awesome": "^4.6.3",
+    "simple-line-icons": "^2.4.1",
+    "jquery": "^3.1.1",
+    "bootstrap": "v4.0.0-alpha.4"
+  }
+}

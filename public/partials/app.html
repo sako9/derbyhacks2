@@ -1,0 +1,153 @@
+<div class="card" id="form-views" style="width: 100%;max-width: 60rem;margin: 0px auto 100px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+       <div class="card-header">
+          <div class="row">
+               <h3 style="display: inline-block;">DerbyHacks</h3>
+                <button style="float:right;" id="singlebutton" name="singlebutton" class="btn btn-primary">Import from MyMlh</button> 
+           </div>
+                
+        </div>
+        <div class="card-block">
+        <h4 class="card-title">Application</h4>
+        <!-- use ng-submit to catch the form submission and use our Angular function -->
+            <form name=applicationform id="application" ng-submit="processForm(applicationform)" novalidate>
+
+                <div class="form-group row">
+                   <div class="col-md-6">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" name="firstname" ng-model="appData.firstname" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" ng-model="appData.lastname" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                   <div class="col-md-6">
+                        <label for="school">School</label>
+                        <input type="text" class="form-control" name="school" ng-model="appData.school" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="major">Major</label>
+                        <input type="text" class="form-control" name="major" ng-model="appData.major" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                   <div class="col-md-4">
+                        <label for="gender">*Gender</label>
+                        <select class="form-control" name="gender" ng-model="appData.gender" required>
+                            <option value="">Select Answer</option><option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Non-Binary">Non-Binary</option>
+                            <option value="I prefer not to say">I prefer not to say</option>
+                            <option value="Other">Other</option>
+                       </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="shirtsize">*Shirt Size</label>
+                        <select class="form-control" name="shirtsize" ng-model="appData.shirtsize" required>
+                            <option value="">Select a Size</option>
+                            <option value="Women's - XS">Women's - XS</option>
+                            <option value="Women's - S">Women's - S</option>
+                            <option value="Women's - M">Women's - M</option>
+                            <option value="Women's - L">Women's - L</option>
+                            <option value="Women's - XL">Women's - XL</option>
+                            <option value="Unisex - XS">Unisex - XS</option>
+                            <option value="Unisex - S">Unisex - S</option>
+                            <option value="Unisex - M">Unisex - M</option>
+                            <option value="Unisex - L">Unisex - L</option>
+                            <option value="Unisex - XL">Unisex - XL</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="dietary">Dietarty Restrictions</label>
+                        <input type="text" class="form-control" name="dietary" ng-model="appData.dietary" placeholder="gluten, nuts,vegan, etc">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label for="age">*Age</label>
+                        <input type="number" class="form-control" name="age" ng-model="appData.age" placeholder="18" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="grade">*Grade</label>
+                        <select class="form-control" name="grade" ng-model="appData.grade" required>
+                            <option value="" disabled selected style="display: none;">Please Choose</option>
+                            <option value="High School / Secondary School">High School / Secondary School</option>
+                            <option value="University (Undergraduate)">University (Undergraduate)</option>
+                            <option selected="selected" value="University (Master's / Doctoral)">University (Master's / Doctoral)</option>
+                            <option value="Not Currently a Student">Not Currently a Student</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="phone">*Phone</label>
+                        <input type="tel" class="form-control" name="phone" ng-model="appData.phone" placeholder="555-555-5555" required>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="specialneeds">Special Needs?</label>
+                    <textarea type="text" class="form-control" name="specialneeds" ng-model="appData.special"></textarea>
+                </div>
+
+                <div class="form-group ">
+                    <label for="pun">Favorite Pun?</label>
+                    <textarea type="text" class="form-control" name="pun" ng-model="appData.pun"></textarea>
+                </div>
+
+                <div class="form-group ">
+                    <label for="github">Github</label>
+                    <input type="string" class="form-control" name="github" ng-model="appData.git" placeholder="https://github.com/">
+                </div>
+
+                <div class="form-group ">
+                    <label for="linkedIn">LinkedIN</label>
+                    <input type="string" class="form-control" name="linkedIn" ng-model="appData.linkedin" placeholder="https://www.linkedin.com/in/">
+                </div>
+
+                <div class="form-group ">
+                    <label for="personal">Personal site</label>
+                    <input type="string" class="form-control" name="personal" ng-model="appData.personal" placeholder="https://personalsite.com/">
+                </div>
+
+                <div class="form-group ">
+                    <label for="other">Other</label>
+                    <input type="url" class="form-control" name="other" ng-model="appData.other" placeholder="https://">
+                </div>
+
+                <div class="form-group">
+                    <label for="resume">Resume</label>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-default" ng-click="upload()">
+                        Upload <span class="caret"></span>
+                        </button>
+                        <div style="margin-top:10px;">
+                            <!-- Show the thumbnail only when the picture is uploaded -->
+                            <a href="{{appData.resume}}" class="thumbnail" ng-if="appData.resume">
+                            <!-- the picture is rendered with width: 500 and shaprpend -->
+                                <img ng-src="{{appData.resume | fpConvert: {filter:'sharpen'} }}/convert" style="height:50rem"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>*
+                        <input type="checkbox" name="conduct" ng-model="appData.conduct" required>
+                        I agree to abide by Major League Hacking's <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf"  target="_blank">Code of Conduct</a>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>*
+                        <input type="checkbox" name="policy" ng-model="appData.policy" required>
+                        We participate in Major League Hacking (MLH) as a MLH Member Event. By checking this box, you authorize us to share certain application/registration information for event administration, ranking, MLH administration, pre and post-event informational e-mails, and occasional messages about hackathons in line with the<a href="https://mlh.io/privacy" target="_blank"> MLH Privacy Policy</a>
+                    </label>
+                </div>
+                <div class="text-xs-center" style="margin-top:5rem"> 
+                    <button type="submit" name="submit" class="btn btn-primary">Submit!</button> 
+                </div>
+
+            </form>
+        </div>
+    </div>

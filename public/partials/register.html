@@ -1,0 +1,30 @@
+    <div class="card" id="form-views" style="width: 100%;max-width: 60rem;margin: 0px auto 100px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+       <div class="card-header">
+            <h3>DerbyHacks</h3>
+        </div>
+        <div class="card-block">
+        <h4 class="card-title">Register</h4>
+        <!-- use ng-submit to catch the form submission and use our Angular function -->
+            <form name=registerform id="register" ng-submit=" processForm(registerform)" novalidate>
+
+                <div class="form-group ">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" ng-model="formData.email" placeholder="youremail@email.com">
+                    <div ng-show="registerform.email.$error.mongoose" style="color: red">
+                        {{registerform.email.$error.mongoose}}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" ng-model="formData.password" placeholder="password">
+                    <div ng-show="registerform.email.$error.mongoose" style="color: red">
+                        {{registerform.password.$error.mongoose}}
+                    </div>
+                </div>
+                <div class="text-xs-center" style="margin-top:5rem"> 
+                    <button type="submit" name="submit" class="btn btn-primary">Register!</button> 
+                </div>
+
+            </form>
+        </div>
+    </div>
