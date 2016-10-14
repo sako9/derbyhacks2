@@ -46,6 +46,9 @@ var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','registerCtrl','n
 app.run(['$rootScope', '$state', function($rootScope, $state, authentication) {
 
     $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+        if (($state === 'form.status' || $state === 'form.app') && !authentication.isLoggedIn()) {
+        $state.path('form.login');
+      }
       
     });
 }]);
