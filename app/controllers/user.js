@@ -36,12 +36,17 @@ module.exports = {
                     newUser.save(function(err){
                         //If no errors, redirect to main page
                         // add token here ?
+                        if(err){ 
+                            res.json({
+                                error: err});
+                        }else{
                         var token
                         token = newUser.generateJwt();
                         res.status(200);
                         res.json({
                             "token":token
                         });
+                        }
                     });
                 }
             });

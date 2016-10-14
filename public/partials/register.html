@@ -17,8 +17,8 @@
                 <div class="form-group ">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" ng-model="formData.password" placeholder="password">
-                    <div ng-show="registerform.email.$error.mongoose" style="color: red">
-                        {{registerform.password.$error.mongoose}}
+                    <div ng-show="errmess" style="color: red">
+                            {{errmess}}
                     </div>
                 </div>
                 <div class="text-xs-center" style="margin-top:5rem"> 

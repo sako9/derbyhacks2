@@ -2,6 +2,7 @@ var registerCtrl = angular.module('registerCtrl',[]);
 registerCtrl.controller('registerController',function($scope,$http,$location,authentication,$state){
     // we will store all of our fomr data in this object
     $scope.formData = {};
+    $scope.errmess = null;
     if(authentication.isLoggedIn()){
         $state.go("form.status");
     }
@@ -11,15 +12,14 @@ registerCtrl.controller('registerController',function($scope,$http,$location,aut
         console.log($scope.formData);
         $http.post('/v1.0/api/register', $scope.formData)
             .success(function(data){
-                for(var key in form ) {
-                    if(form[key] && form[key].$error){
-                        form[key].$error.mongoose = null;
-                    }
-                }
+                $scope.errmess = null;
                 if(data.error){
-                    for( key in data.error.errors){
-                        form[key].$error.mongoose = data.error.errors[key].message;   
+                    if(data.error.code = 11000){
+                        $scope.errmess = "That email is already in use";
+                    }else{
+                        $scope.errmess = "There was an error";
                     }
+
                 }else{
                     authentication.saveToken(data.token);
                     $state.go('form.status');
