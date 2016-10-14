@@ -4,6 +4,7 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 var jwt = require('express-jwt');
+var config = require('./config/config');
 var auth = jwt({
     secret: 'MY_SECRECT',
     userProperty: 'payload'
