@@ -22,7 +22,7 @@ registerCtrl.controller('registerController',function($scope,$http,$location,aut
 
                 }else{
                     authentication.saveToken(data.token);
-                    $state.go('form.status');
+                    $state.go('form.app');
                 }
             })
             .error(function(data){
