@@ -9,6 +9,7 @@ var auth = jwt({
     secret: config.secret,
     userProperty: 'payload'
 });
+var cors = require('cors');
 
 var port = process.env.PORT || 3009;
 var morgan = require('morgan');
@@ -32,7 +33,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 //Log with Morgan 
 app.use(morgan('dev'));
-
+app.use(cors());
 //parse application/json and look for raw text
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
