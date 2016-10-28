@@ -12,14 +12,11 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
                    $scope.application.status = 'Application Not submitted';
                 }else if(data.error){
                     alert(data.error);
-                    console.log(data);
                 }else{
                     $scope.application = data._application;
-                    console.log(data );
                 }
             })
             .error(function(data){
-                console.log(data);
             });
     }
     
@@ -28,15 +25,12 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
         $http.get('/v1.0/api/application',{ headers: headers })
             .success(function(data){
                 if(data.error){
-                    console.log(data.error);
                    alert(data.error);
                 }else{
                     $scope.application = data;
-                    console.log(data);
                 }
             })
             .error(function(data){
-                console.log(data);
             });
     }
     

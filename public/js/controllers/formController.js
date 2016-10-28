@@ -14,11 +14,9 @@ formCtrl.controller('formController',function($scope,$http,filepickerService,aut
                     $scope.update = true;
                 }else if(data.error){
                     alert(data.error);
-                    console.log(data);
                 }
             })
             .error(function(data){
-                console.log(data);
             });
     }
     
@@ -46,7 +44,6 @@ formCtrl.controller('formController',function($scope,$http,filepickerService,aut
                     }
                 })
                 .error(function(data){
-                    console.log(data);
                 });
         }else{
             $http.patch('/v1.0/api/application', $scope.appData,{ headers: headers })
@@ -68,7 +65,6 @@ formCtrl.controller('formController',function($scope,$http,filepickerService,aut
                     }
                 })
                 .error(function(data){
-                    console.log(data);
                 });
         }
     };
@@ -85,7 +81,6 @@ formCtrl.controller('formController',function($scope,$http,filepickerService,aut
                 openTo: 'BOX'
             },
             function(Blob){
-                console.log(JSON.stringify(Blob));
                 $scope.appData.resume = Blob.url;
                 $scope.$apply();
             }
