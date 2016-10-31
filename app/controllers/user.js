@@ -10,8 +10,8 @@ module.exports = {
          */
         getAll :(req, res) => {
             //Query the DB if no errors, send all users
-            var query = User.find({});
-            query.exce(function(err, users){
+            var query = User.find().populate('_application');
+            query.exec(function(err, users){
                 if(err) res.send(err);
                 //if no errors, send them back to the client
                 res.json(users);

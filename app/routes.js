@@ -8,6 +8,7 @@ module.exports = function (router) {
     
     var user = require('./controllers/user');
     var application = require('./controllers/application');
+    var stats = require('./controllers/stats');
     
     /*
     Routes
@@ -23,6 +24,16 @@ module.exports = function (router) {
     router.post('/apply', auth, application.create);
     router.get('/application', auth, application.getOne);
     router.patch('/application', auth, application.update);
+    router.get('/applications',auth,application.getAll);
+    
+    // stats
+  router.get('/stats/registrations',  stats.registrations);
+  router.get('/stats/shirts',  stats.shirts);
+  router.get('/stats/dietary',  stats.dietary);
+  router.get('/stats/gender',  stats.gender);
+  router.get('/stats/schools',  stats.schools);
+  router.get('/stats/count',  stats.count);
+
 
     
 };

@@ -16,16 +16,17 @@ module.exports = {
          */
         getAll :(req, res) => {
             //Query the DB if no errors, send all users
-            if(! req.payload._id || (req.payload.role != "staff" || req.payload.role != "admin")){
+            if(false){
                 res.status(401).json({
                     "message" : "Unauthorized"
                 });
             }else{
+                console.log("hey");
                 var query = Application.find({});
-                query.exce(function(err, apps){
+                query.exec(function(err, apps){
                     if(err) res.send(err);
                     //if no errors, send them back to the client
-                    res.json(apps);
+                    return res.status(200).json(apps)
                 });
             }
         },
