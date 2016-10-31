@@ -19,12 +19,12 @@ module.exports = {
       })
       .exec((err, users) => {
         if (err) return res.internalError();
-        let apps = users.filter((user) => {
+        var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
           return user._application;
         });
-        let months = [
+        var months = [
           {name: 'January', count: 0},
           {name: 'February', count: 0},
           {name: 'March', count: 0},
@@ -38,8 +38,8 @@ module.exports = {
           {name: 'November', count: 0},
           {name: 'December', count: 0}
         ];
-        for (let i = 0; i < apps.length; ++i) {
-          let index = apps[i].created.getMonth(); // int value of the month, ex 7
+        for (var i = 0; i < apps.length; ++i) {
+          var index = apps[i].created.getMonth(); // int value of the month, ex 7
           months[index].count++;
         }
         return res.status(200).json({
@@ -66,17 +66,17 @@ module.exports = {
       })
       .exec((err, users) => {
         if (err) return res.internalError();
-        let apps = users.filter((user) => {
+        var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
           return user._application;
         });
-        let xsmall = 0;
-        let small = 0;
-        let medium = 0;
-        let large = 0;
-        let xlarge = 0;
-        for (let i = 0; i < apps.length; ++i) {
+        var xsmall = 0;
+        var small = 0;
+        var medium = 0;
+        var large = 0;
+        var xlarge = 0;
+        for (var i = 0; i < apps.length; ++i) {
           switch (apps[i].shirtSize) {
             case 'Unisex - XS':
               xsmall++;
@@ -120,17 +120,17 @@ module.exports = {
       })
       .exec(function (err, users) {
         if (err) return res.internalError();
-        let apps = users.filter((user) => {
+        var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
           return user._application;
         });
-        let restrictions = {};
-        for (let i = 0; i < apps.length; ++i) {
+        var restrictions = {};
+        for (var i = 0; i < apps.length; ++i) {
           if (apps[i].dietary) {
-              let diet = apps[i].dietary.split(',');
-            for (let j = 0; j < diet.length; ++j) {
-              let name = diet[j];
+              var diet = apps[i].dietary.split(',');
+            for (var j = 0; j < diet.length; ++j) {
+              var name = diet[j];
               if (name in restrictions) {
                 restrictions[name]++;
               } else {
@@ -140,8 +140,8 @@ module.exports = {
           }
         }
         console.log(restrictions);
-        let dietary = [];
-        for (let key in restrictions) {
+        var dietary = [];
+        for (var key in restrictions) {
           if (restrictions.hasOwnProperty(key)) {
             dietary.push({
               name: key,
@@ -169,15 +169,15 @@ module.exports = {
       })
       .exec((err, users) => {
         if (err) return res.internalError();
-        let apps = users.filter((user) => {
+        var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
           return user._application;
         });
-        let male = 0;
-        let female = 0;
-        let other = 0;
-        for (let i = 0; i < apps.length; ++i) {
+        var male = 0;
+        var female = 0;
+        var other = 0;
+        for (var i = 0; i < apps.length; ++i) {
           if (apps[i].gender) {
             if (apps[i].gender.toLowerCase() == 'male') {
               male++;
@@ -212,20 +212,20 @@ module.exports = {
       })
       .exec((err, users) => {
         if (err) return res.internalError();
-        let apps = users.filter((user) => {
+        var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
           return user._application;
         });
-        let s = {};
-        for (let i = 0; i < apps.length; ++i) {
+        var s = {};
+        for (var i = 0; i < apps.length; ++i) {
           if (apps[i].school) {
-            let school = apps[i].school;
+            var school = apps[i].school;
             s[school] = (s[school] || 0) + 1;
           }
         }
-        let schools = [];
-        for (let key in s) {
+        var schools = [];
+        for (var key in s) {
           schools.push({
             name: key,
             count: s[key]
