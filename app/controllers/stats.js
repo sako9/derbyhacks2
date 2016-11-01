@@ -96,6 +96,7 @@ module.exports = {
           }
         }
         return res.status(200).json({
+          xsmall: xsmall,
           small: small,
           medium: medium,
           large: large,
