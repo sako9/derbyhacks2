@@ -18,9 +18,15 @@ html, body {
 
 }
 
+@media (min-width: 768px) {
 .vertical-align {
     display: flex;
     align-items: center;
+  }
+}
+
+.vertical-align {
+
 }
 
 
@@ -28,6 +34,9 @@ html, body {
     text-align: center;
 }
 
+.thumbnail {
+	margin-bottom:7px;
+}
 .para-1{
 
     /* Create the parallax scrolling effect */
