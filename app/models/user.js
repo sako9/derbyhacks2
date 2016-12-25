@@ -39,6 +39,10 @@ UserSchema.pre('save', function(next){
     });
 });
 
+/*fucntion to create a token for a user
+ * this token will be used to check if users
+ * can access certain routes
+*/
 UserSchema.methods.generateJwt = function() {
   var expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
@@ -51,7 +55,9 @@ UserSchema.methods.generateJwt = function() {
   }, config.secret); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
-
+/*
+ * function to check a users password
+*/
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(err);

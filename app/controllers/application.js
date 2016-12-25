@@ -11,8 +11,8 @@ var _APPROVED = 'approved',
 module.exports = {
 
         /*
-         * Get route to retrieve all users
-         * Todo: make it so only admins can access route
+         * Get route to retrieve all applications
+         * Should require staff/admin auth
          */
         getAll :(req, res) => {
             //Query the DB if no errors, send all users
@@ -30,6 +30,10 @@ module.exports = {
                 });
             }
         },
+        /*
+         *Post route to create a new application for the currently logged in user 
+         *
+         */
         create: (req, res) =>{
             //find user in database
             if (!req.payload._id) {
@@ -38,7 +42,7 @@ module.exports = {
                 });
             }else{
                  User.findById(req.payload._id).exec(function(err, user) {
-                    if (err) return res.status(500).send('Something broke!');
+                    if(err){ res.json({error: err}); }
                     var newApp = new Application();
                     //Save it into the DB.
                     newApp.status = 'pending';
@@ -71,10 +75,10 @@ module.exports = {
                         }
                          else{
                             newApp.save(function(err){
-                                if(err) return res.send(err);
+                                if(err){ res.json({error: err}); }
                                 user._application = newApp._id;
                                 user.save(function(err){
-                                    if(err) return res.send(err);
+                                    if(err){ res.json({error: err}); }
                                     var email = new Email({
                                         subject: 'Your DerbyHacks Application',
                                         body: '# Thanks for applying to DerbyHacks!\nWe appreciate your interest.',
@@ -102,7 +106,7 @@ module.exports = {
         },
         
         /*
-        * Get a single user based on id.
+        * Get a single application of a user based of id.
         */
         getOne: (req, res) =>{
             if(! req.payload._id){
@@ -110,17 +114,17 @@ module.exports = {
                     "message" : "Unauthorized"
                 });
             }else{
-                                console.log(req.payload._id);
-
                 User.findById(req.payload._id)
                 .populate('_application')
                 .exec((err, user) => {
-                    if(err) res.send(err);
-                    console.log(user);
+                    if(err){ res.json({error: err}); }
                     return res.status(200).json(user);
                 });
             }
         },
+        /*
+        * Update a logged in users application 
+        */
         update: (req,res) =>{
             if (!req.payload._id) {
                 res.status(401).json({

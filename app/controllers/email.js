@@ -13,7 +13,7 @@ module.exports = {
     var email = new Email(req.body);
 
     email.send(true, (err, email) => {
-      if(err) return res.send(err);
+      if(err){ res.json({error: err}); }
       return res.status(201).json(email);
     });
   },
@@ -27,7 +27,7 @@ module.exports = {
     Email
       .find()
       .exec((err, emails) => {
-        if(err) return res.send(err);
+        if(err){ res.json({error: err}); }
         return res.status(200).json({emails: emails});
       });
   },
@@ -41,7 +41,7 @@ module.exports = {
     Email
       .findByIdAndRemove(req.params.id)
       .exec((err, email) => {
-        if(err) return res.send(err);
+        if(err){ res.json({error: err}); }
         var response = {
           _id: email._id
         };

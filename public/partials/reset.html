@@ -1,0 +1,28 @@
+    <div class="card" id="form-views" style="width: 100%;max-width: 60rem;margin: 0px auto 100px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+       <div class="card-header">
+            <h3>DerbyHacks</h3>
+        </div>
+        <div class="card-block">
+        <h4 class="card-title">Reset Password</h4>
+        <!-- use ng-submit to catch the form submission and use our Angular function -->
+            <form name=resetform id="reset" ng-submit=" processForm(loginform)" novalidate>
+
+                <div class="form-group ">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" ng-model="resetData.email" placeholder="youremail@email.com">
+                </div>
+                <div ng-show="message" style="color: red">
+                            {{message}}
+                        </div>
+                <div class="text-xs-center" style="margin-top:5rem"> 
+                    <a ui-sref="form.login" class="btn btn-primary">Login</a>
+                    <a ui-sref="form.register" class="btn btn-primary">Register</a> 
+                    <button type="submit" name="submit" class="btn btn-primary">Reset!</button> 
+                </div>
+
+            </form>
+            <p style="display:none;" id="success" class="card-text"> You have succesfully reset your password!</p>
+        </div>
+        <div id="loader" style="display:none;"></div>
+
+    </div>
