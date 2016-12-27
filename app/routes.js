@@ -20,6 +20,7 @@ module.exports = function (router) {
     router.post('/register', user.register);
     router.post('/login', user.login);
     router.get('/users', auth, user.getAll);
+    router.get('/users/:id', auth, user.getOne);
     router.post('/reset', user.resetPassword);
     router.patch('/user', auth, user.patch);
     router.patch('/user/:id', auth, user.patchById);
@@ -33,7 +34,7 @@ module.exports = function (router) {
     //Email routes
     router.get('/emails', auth, email.get);
     router.post('/emails',auth, email.post);
-    router.delete('/emails/:id')
+    router.delete('/emails/:id');
     
     // stats
   router.get('/stats/registrations',  stats.registrations);
