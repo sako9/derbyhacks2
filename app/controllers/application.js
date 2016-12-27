@@ -136,7 +136,7 @@ module.exports = {
                     return res.status(200).json(user);
                 });
             }
-        }
+        },
         /*
         * Update a logged in users application 
         */
