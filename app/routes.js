@@ -28,13 +28,15 @@ module.exports = function (router) {
     //application routes
     router.post('/apply', auth, application.create);
     router.get('/application', auth, application.getOne);
+    router.get('/application/:id',auth, application.getOneById);
     router.patch('/application', auth, application.update);
+    router.patch('/application/:id', auth, application.updatebyid);
     router.get('/applications',auth,application.getAll);
     
     //Email routes
     router.get('/emails', auth, email.get);
     router.post('/emails',auth, email.post);
-    router.delete('/emails/:id');
+    router.delete('/emails/:id', auth, email.delete);
     
     // stats
   router.get('/stats/registrations',  stats.registrations);

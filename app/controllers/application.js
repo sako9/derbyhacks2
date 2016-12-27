@@ -106,7 +106,7 @@ module.exports = {
         },
         
         /*
-        * Get a single application of a user based of id.
+        * Get a single application of a logged in user.
         */
         getOne: (req, res) =>{
             if(! req.payload._id){
@@ -122,6 +122,21 @@ module.exports = {
                 });
             }
         },
+    
+        getOneById:(req,res) =>{
+            if(! req.payload._id){
+                res.status(401).json({
+                    "message" : "Unauthorized"
+                });
+            }else{
+                User.findById(req.params.id)
+                .populate('_application')
+                .exec((err, user) => {
+                    if(err){ res.json({error: err}); }
+                    return res.status(200).json(user);
+                });
+            }
+        }
         /*
         * Update a logged in users application 
         */
@@ -153,5 +168,82 @@ module.exports = {
                     });
                 });
             }
+        },
+    updatebyid:(req,res) =>{
+        //Todo if admin
+        User.findByIdAndUpdate(req.params.id)
+            .exec((err,user) =>{
+            if (err) return res.status(500).send(err);
+            if (user._application){
+                Application.findByIdAndUpdate(user._application, req.body, {new: true})
+                .exec((err, application) =>{
+                    if (err) return res.status(500).send(err);
+                    if(req.body.status == this._APPROVED){
+                        //Send Acceptance email
+                        new Email({
+                            subject: 'You\'ve been accepted to DerbyHacks!',
+                            body: '## You\'re invtied!\n\n\n Congratulations, you have been accepted to DerbyHacks. Please Rsvp here:',
+                            recipients: {
+                                emails:[user.email]
+                            }
+                        }).send();
+                    }else if (req.body.status == this._WAITLISTED){
+                        //Send waitlist email
+                        new Email({
+                            subject: 'You have been waitlisted',
+                            body: 'You have currently been waitlisted.',
+                            recipients: {
+                                emails:[user.email]
+                            }
+                        }).send();
+                    }else if (req.body.status == this._DENIED){
+                        //Send rejection email
+                        new Email({
+                            subject: 'You\re application status',
+                            body:'You have been denied from derbyhacks',
+                            recipients: {
+                                emails:[user.email]
+                            }
+                        }).send();
+                    }
+                    
+                    if(req.body.checked){
+                        new Email({
+                            subject:'Welcome to derby hacks',
+                            body: "# Welcome to derby hacks!",
+                            recipients: {
+                                emails:[user.email]
+                            }
+                        }).send();
+                    }
+                    
+                    var response = {
+                        _id: user._id,
+                        email: user.email,
+                        role: user.role,
+                        created: user.created,
+                        _application :application
+                    };
+                    return res.status(200).json(response);
+                    
+                });
+            }else{
+                var application = new Application(req.body);
+                application.save((err, application) => {
+                    user._application = application;
+                    user.save((err, user) =>{
+                        if (err) return res.status(500).send(err);
+                        var response = {
+                            _id: user._id,
+                            email: user.email,
+                            role: user.role,
+                            created: user.created,
+                            _application :application
+                        };
+                        return res.status(200).json(response);
+                        });
+                    });
+                }
+            });
         }
 };
