@@ -9,6 +9,7 @@ module.exports = function (router) {
     var user = require('./controllers/user');
     var application = require('./controllers/application');
     var stats = require('./controllers/stats');
+    var email = require('./controllers/email');
     
     /*
     Routes
@@ -28,6 +29,11 @@ module.exports = function (router) {
     router.get('/application', auth, application.getOne);
     router.patch('/application', auth, application.update);
     router.get('/applications',auth,application.getAll);
+    
+    //Email routes
+    router.get('/emails', auth, email.get);
+    router.post('/emails',auth, email.post);
+    router.delete('/emails:id')
     
     // stats
   router.get('/stats/registrations',  stats.registrations);
