@@ -6,12 +6,14 @@ resetCtrl.controller('resetController',function($scope,$http,$state,$location){
     
     //function to process the form
     $scope.processForm = function(form){
+        $("#reset").hide();
         $http.post('/v1.0/api/reset', $scope.resetData)
             .success(function(data) {
                 $scope.message = null;
-                
-                settimeout(function(){ $state.go("form.status");},1000);
+                $("#success").show();
+                setTimeout(function(){ $state.go("form.status");},1000);
               }).error(function(data){
+                $("#reset").show();
                 $scope.message = data.message;
             });
         

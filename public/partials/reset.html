@@ -5,7 +5,7 @@
         <div class="card-block">
         <h4 class="card-title">Reset Password</h4>
         <!-- use ng-submit to catch the form submission and use our Angular function -->
-            <form name=resetform id="reset" ng-submit=" processForm(loginform)" novalidate>
+            <form name=resetform id="reset" ng-submit=" processForm(resetform)" novalidate>
 
                 <div class="form-group ">
                     <label for="email">Email</label>
@@ -23,6 +23,5 @@
             </form>
             <p style="display:none;" id="success" class="card-text"> You have succesfully reset your password!</p>
         </div>
-        <div id="loader" style="display:none;"></div>
 
     </div>

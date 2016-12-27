@@ -129,12 +129,12 @@ module.exports = {
   */
   patch: (req, res) => {
       if (!req.payload._id) {
-            res.status(401).json({
+            return res.status(401).json({
                 "message" : "UnauthorizedError: private profile"
             });
         }else{
             User.findById(req.payload._id).exec(function(err, user) {
-                if(err){ res.json({error: err}); }
+                if(err){ res.status(500).json({message: err}); }
                 if (req.body.email) {
                     user.email = req.body.email.toLowerCase();
                 }
@@ -144,17 +144,19 @@ module.exports = {
                 
                 user.validate(function(error){
                     if(error){
-                        res.json({
+                        return res.status(500).json({
                             error: error});
                     }else{
-                        newUser.save(function(err){
+                        user.save(function(err){
                             //If no errors, redirect to main page
                             // add token here ?
                             if(err){ 
-                                res.json({
+                                return res.status(500).json({
                                     error: err});
                             }else{
-                            res.status(200);
+                                return res.status(200).json({
+                                    "message" : "Update Successful"
+                                });
                             }
                         });
                     }

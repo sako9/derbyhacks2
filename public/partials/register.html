@@ -17,12 +17,12 @@
                 <div class="form-group ">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" ng-model="formData.password" placeholder="password">
+                    <a ui-sref="form.reset" >Reset Password</a>
                     <div ng-show="errmess" style="color: red">
                             {{errmess}}
                     </div>
                 </div>
                 <div class="text-xs-center" style="margin-top:5rem">
-                    <a ui-sref="form.reset" class="btn btn-primary">Reset Password</a> 
                     <a ui-sref="form.login" class="btn btn-primary">Login</a> 
                     <button type="submit" name="submit" class="btn btn-primary">Register!</button> 
                 </div>

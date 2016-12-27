@@ -1,0 +1,29 @@
+    <div class="card" id="form-views" style="width: 100%;max-width: 60rem;margin: 0px auto 100px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+       <div class="card-header">
+            <h3>DerbyHacks</h3>
+        </div>
+        <div class="card-block">
+        <h4 class="card-title">Update Password</h4>
+        <!-- use ng-submit to catch the form submission and use our Angular function -->
+            <form name=updateform id="update" ng-submit=" processForm(updateform)" novalidate>
+                <div class="form-group ">
+                    <label for="password">New Password</label>
+                    <input type="password" class="form-control" name="password" ng-model="updateData.password" placeholder="new password" required>
+                </div>
+                <div class="form-group ">
+                    <label for="password">Retype Password</label>
+                    <input type="password" class="form-control" name="Repassword" ng-model="updateData.repassword" placeholder="confirm password" required>
+                </div>
+                <div ng-show="message" style="color: red">
+                            {{message}}
+                        </div>
+                <div class="text-xs-center" style="margin-top:5rem"> 
+                    <a ui-sref="form.status" class="btn btn-primary">Back</a> 
+                    <button type="submit" name="submit" class="btn btn-primary">Update!</button> 
+                </div>
+
+            </form>
+            <p style="display:none;" id="success" class="card-text"> You have succesfully updated your password!</p>
+        </div>
+
+    </div>

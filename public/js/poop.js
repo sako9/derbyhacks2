@@ -1,5 +1,5 @@
 // create our angular app and inject ngAnimate and ui-router
-var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','resetCtrl','registerCtrl','navCtrl','ngAnimate', 'ui.router','angular-filepicker'])
+var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','resetCtrl','registerCtrl','navCtrl','updateCtrl','ngAnimate', 'ui.router','angular-filepicker'])
     //Configuring our routes
     .config(function($stateProvider, $urlRouterProvider, filepickerProvider) {
         
@@ -35,6 +35,11 @@ var app = angular.module('derbyhacks', ['formCtrl','loginCtrl','resetCtrl','regi
                 url:'/reset',
                 templateUrl:'partials/reset.html',
                 controller: 'resetController'
+            })
+            .state('form.update', {
+                url:'/update',
+                templateUrl:'partials/update.html',
+                controller: 'updateController'
             })
             .state('home',{
                 url:'/home',
