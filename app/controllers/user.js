@@ -198,7 +198,7 @@ module.exports = {
       .findByIdAndUpdate(req.params.id, req.body, {new: true})
       .exec((err, user) => {
         if(err){ res.json({error: err}); }
-        let response = {
+        var response = {
           _id: user._id,
           email: user.email,
           role: user.role,
