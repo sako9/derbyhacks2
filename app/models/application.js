@@ -23,7 +23,7 @@ var ApplicationSchema = new Schema({
     dietary : {type: String},
     age : {type: Number, required: true},
     grade : {type: String, required: true},
-    phone: {type: String, validate: { validator: function(v) { return /\d{3}-\d{3}-\d{4}/.test(v);}, message: '{VALUE} is not a valid phone number!'},required: [true, 'User phone number required'] },
+    phone: {type: String ,required: [true, 'User phone number required'] },
     special : { type: String},
     pun : {type: String},
     git : {type: String},
