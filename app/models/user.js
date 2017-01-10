@@ -15,7 +15,7 @@ var UserSchema = new Schema({
     email: {type: String, required:true, trim:true, lowercase: true, unique:true,validate: [validateEmail, 'Please fill a valid email address']},
     password: { type: String, required: true },
     _application: {type: mongoose.Schema.Types.ObjectId, ref: 'app'},
-    role: {type: String, enm: ['attendee', 'staff', 'admin'], default: 'attendee'}
+    role: {type: String, enum: ['attendee', 'staff', 'admin','pstaff'], default: 'attendee'}
 });
 
 UserSchema.pre('save', function(next){
