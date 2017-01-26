@@ -17,7 +17,7 @@ module.exports = {
         getAll :(req, res) => {
             //Query the DB if no errors, send all users
             if(false){
-                res.status(401).json({
+                return res.status(401).json({
                     "message" : "Unauthorized"
                 });
             }else{
@@ -37,7 +37,7 @@ module.exports = {
         create: (req, res) =>{
             //find user in database
             if (!req.payload._id) {
-                res.status(401).json({
+                return res.status(401).json({
                   "message" : "UnauthorizedError: private profile"
                 });
             }else{
@@ -70,7 +70,7 @@ module.exports = {
                     newApp.policy = req.body.policy;
                     newApp.validate(function(error){
                         if(error){
-                            res.json({
+                            return res.json({
                                 error: error});
                         }
                          else{
@@ -78,7 +78,7 @@ module.exports = {
                                 if(err){ res.json({error: err}); }
                                 user._application = newApp._id;
                                 user.save(function(err){
-                                    if(err){ res.json({error: err}); }
+                                    if(err){ return res.json({error: err}); }
                                     var email = new Email({
                                         subject: 'Your DerbyHacks Application',
                                         body: '# Thanks for applying to DerbyHacks!\nWe appreciate your interest.',
@@ -110,14 +110,14 @@ module.exports = {
         */
         getOne: (req, res) =>{
             if(! req.payload._id){
-                res.status(401).json({
+                return res.status(401).json({
                     "message" : "Unauthorized"
                 });
             }else{
                 User.findById(req.payload._id)
                 .populate('_application')
                 .exec((err, user) => {
-                    if(err){ res.json({error: err}); }
+                    if(err){ return res.json({error: err}); }
                     return res.status(200).json(user);
                 });
             }
@@ -132,7 +132,7 @@ module.exports = {
                 User.findById(req.params.id)
                 .populate('_application')
                 .exec((err, user) => {
-                    if(err){ res.json({error: err}); }
+                    if(err){ return res.json({error: err}); }
                     return res.status(200).json(user);
                 });
             }
@@ -149,13 +149,13 @@ module.exports = {
                 var newApp = new Application(req.body);
                 newApp.validate(function(error){
                         if(error){
-                            res.json({
+                            return res.json({
                                 error: error});
                         }
                      });
                 User.findByIdAndUpdate(req.payload._id)
                 .exec((err, user) => {
-                    if(err) res.send(err);
+                    if(err) return res.send(err);
                     Application.findByIdAndUpdate(user._application, newApp, {new: true})
                     .exec((err,application) => {
                         return res.status(200).json({

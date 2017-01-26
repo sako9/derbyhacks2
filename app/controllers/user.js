@@ -16,7 +16,7 @@ module.exports = {
             query.exec(function(err, users){
                 if(err){ res.json({error: err}); }
                 //if no errors, send them back to the client
-                res.json(users);
+                return res.json(users);
             });
         },
         /*
@@ -33,7 +33,7 @@ module.exports = {
             
             newUser.validate(function(error){
                 if(error){
-                    res.json({
+                   return res.json({
                         error: error});
                 }else{
                     newUser.save(function(err){
@@ -46,7 +46,7 @@ module.exports = {
                         var token
                         token = newUser.generateJwt();
                         res.status(200);
-                        res.json({
+                        return res.json({
                             "token":token
                         });
                         }
@@ -64,16 +64,16 @@ module.exports = {
 
                 // If Passport throws/catches an error
                if(err){ 
-                   if(err){ res.json({error: err}); }
+                   if(err){ return res.json({error: err}); }
                }else if(user){
                   token = user.generateJwt();
                   res.status(200);
-                  res.json({
+                  return res.json({
                     "token" : token
                   });
                 } else {
                   // If user is not found
-                  res.status(404).json(info);
+                  return res.status(404).json(info);
                 }
               })(req, res);
         
@@ -84,17 +84,31 @@ module.exports = {
         */
         getOne: (req, res) =>{
             if(! req.payload._id || (req.payload.role != "staff" || req.payload.role != "admin")){
-                res.status(401).json({
+                return res.status(401).json({
                     "message" : "Unauthorized"
                 });
             }else{
             User.findById(req.params.id, function(err, user){
                 if(err){ res.json({error: err}); }
                 //If no errors, send it back to the client
-                res.json(user);
+                return res.json(user);
             });
             }
         },
+      delete: (req,res) =>{
+          if(!req.payload._id || (req.payload.role != "staff" || req.payload.role != "admin")){
+              res.status(401).json({
+                  "message" : "Unauthorized"
+              });
+          }else{
+              User.findByIdAndRemove(req.params.id, function(err,user){
+                  if(err){ return res.json({error: err});}
+                  return res.json(user);
+                    
+              });
+          }
+          
+      },
     
         /*
          * Reset the password for a logged in user 

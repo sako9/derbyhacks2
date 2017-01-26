@@ -18,7 +18,7 @@ module.exports = {
         select: 'created'
       })
       .exec((err, users) => {
-        if(err){ res.json({error: err}); }
+        if(err){ return res.json({error: err}); }
         var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
@@ -65,7 +65,7 @@ module.exports = {
         select: 'shirtSize'
       })
       .exec((err, users) => {
-        if(err){ res.json({error: err}); }
+        if(err){ return res.json({error: err}); }
         var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
@@ -120,7 +120,7 @@ module.exports = {
         select: 'dietary'
       })
       .exec(function (err, users) {
-        if(err){ res.json({error: err}); }
+        if(err){ return res.json({error: err}); }
         var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
@@ -169,7 +169,7 @@ module.exports = {
         select: 'gender'
       })
       .exec((err, users) => {
-        if(err){ res.json({error: err}); }
+        if(err){ return res.json({error: err}); }
         var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
@@ -212,7 +212,7 @@ module.exports = {
         select: 'school'
       })
       .exec((err, users) => {
-        if(err){ res.json({error: err}); }
+        if(err){ return res.json({error: err}); }
         var apps = users.filter((user) => {
           return user._application;
         }).map((user) => {
@@ -246,7 +246,7 @@ module.exports = {
     Application
       .count(req.query)
       .exec((err, count) => {
-        if(err){ res.json({error: err}); }
+        if(err){ return res.json({error: err}); }
         return res.status(200).json({count});
       });
   }

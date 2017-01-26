@@ -24,6 +24,7 @@ module.exports = function (router) {
     router.post('/reset', user.resetPassword);
     router.patch('/user', auth, user.patch);
     router.patch('/user/:id', auth, user.patchById);
+    router.delete('/user/:id',auth, user.delete);
     
     //application routes
     router.post('/apply', auth, application.create);
