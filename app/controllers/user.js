@@ -98,7 +98,8 @@ module.exports = {
       delete: (req,res) =>{
           if(!req.payload._id || (req.payload.role != "staff" || req.payload.role != "admin")){
               res.status(401).json({
-                  "message" : "Unauthorized"
+                  "message" : "Unauthorized",
+                  "req" : req.payload
               });
           }else{
               User.findByIdAndRemove(req.params.id, function(err,user){
