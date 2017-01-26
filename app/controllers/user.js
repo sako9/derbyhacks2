@@ -83,7 +83,7 @@ module.exports = {
         * Get a single user based on id.
         */
         getOne: (req, res) =>{
-            if(! req.payload._id || (req.payload.role != "staff" || req.payload.role != "admin")){
+            if(! req.payload._id || (req.payload.role != "staff" && req.payload.role != "admin")){
                 return res.status(401).json({
                     "message" : "Unauthorized"
                 });
@@ -96,7 +96,7 @@ module.exports = {
             }
         },
       delete: (req,res) =>{
-          if(!req.payload._id || (req.payload.role != "staff" || req.payload.role != "admin")){
+          if(!req.payload._id || (req.payload.role != "staff" && req.payload.role != "admin")){
               res.status(401).json({
                   "message" : "Unauthorized",
                   "req" : req.payload
