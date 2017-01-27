@@ -196,7 +196,7 @@ module.exports = {
                             recipients: {
                                 emails:[user.email]
                             }
-                        }).send();
+                        }).send(false);
                     }else if (req.body.status == "denied"){
                         //Send rejection email
                         new Email({
@@ -205,7 +205,7 @@ module.exports = {
                             recipients: {
                                 emails:[user.email]
                             }
-                        }).send();
+                        }).send(false);
                     }
                     
                     if(req.body.checked){
@@ -215,7 +215,7 @@ module.exports = {
                             recipients: {
                                 emails:[user.email]
                             }
-                        }).send();
+                        }).send(false);
                     }
                     
                     var response = {
