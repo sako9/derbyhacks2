@@ -23,15 +23,16 @@ module.exports = {
         if (!users || !users.length) return res.send('No attendees match that query');
         var list = users.map((user) => {
           return {
-            'FirstName': user._application.name || '',
+            'Name': user._application.name +' ' + user._application.name || '',
             'Email': user.email || '',
             'Phone': user._application.phone || '',
             'School': user._application.school || '',
             'Major': user._application.major || '',
-            'Year': user._application.year || '',
+            'Year': user._application.grade || '',
             'Age': user._application.age || '',
             'Gender': user._application.gender || '',
-            'Shirt Size': user._application.shirt || '',
+            'Pun':user._application.pun || '',
+            'Shirt Size': user._application.shirtSize || '',
             'RSVPd?': (user._application.going) ? 'Yes' : 'No',
             'Link': user._application.link || '',
             'Status': user._application.status || '',
