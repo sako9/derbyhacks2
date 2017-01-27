@@ -77,7 +77,7 @@ module.exports = {
         archive.pipe(res);
 
         for(var i in files) {
-            archive.append(request(files[i]), { name: files[i].name });
+            archive.append(request(files[i].path), { name: files[i].name });
         }
         
         archive.finalize();
