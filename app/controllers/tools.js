@@ -1,6 +1,9 @@
 var User = require('../models/user');
 var Application = require('../models/application');
 var csv = require('to-csv');
+var request = require('request');
+var fs = require('fs');
+var archiver = require('archiver')
 
 module.exports = {
 
@@ -53,7 +56,7 @@ module.exports = {
   resumes: (req, res) => {
     Application
       .find(req.query)
-      .select('resume name')
+      .select('resume firstName')
       .exec((err, applications) => {
         if (err) return res.internalError();
 
@@ -63,15 +66,22 @@ module.exports = {
 
           // normalize file names
           var newName = titleCase(application.name).replace(/\s/g, '');
-          var newExt = path.extname(application.resume);
           return {
-            path: path.join(__dirname, '../../uploads/', application.resume),
-            name: newName + newExt
+            path: application.resume,
+            name: newName 
           };
 
         });
+        var archive = archiver('zip');
+        res.attachment('archive-name.zip');
+        archive.pipe(res);
 
-        return res.zip(files);
+        for(var i in files) {
+            archive.append(request(files[i]), { name: files[i].name });
+        }
+        
+        archive.finalize();
+
 
       });
   }

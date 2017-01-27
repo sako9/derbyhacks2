@@ -25,7 +25,6 @@ var ApplicationSchema = new Schema({
     grade : {type: String, required: true},
     phone: {type: String ,required: [true, 'User phone number required'] },
     special : { type: String},
-    pun : {type: String},
     git : {type: String},
     LinkedIN : {type: String},
     personal : {type: String},
