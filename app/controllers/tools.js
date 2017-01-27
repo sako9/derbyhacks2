@@ -55,13 +55,13 @@ module.exports = {
       .exec((err, applications) => {
         if (err) return res.internalError();
 
-        let files = applications.filter((application) => {
+        var files = applications.filter((application) => {
           return application.resume;
         }).map((application) => {
 
           // normalize file names
-          let newName = titleCase(application.name).replace(/\s/g, '');
-          let newExt = path.extname(application.resume);
+          var newName = titleCase(application.name).replace(/\s/g, '');
+          var newExt = path.extname(application.resume);
           return {
             path: path.join(__dirname, '../../uploads/', application.resume),
             name: newName + newExt
