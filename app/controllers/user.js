@@ -29,7 +29,6 @@ module.exports = {
             newUser.email= req.body.email;
             newUser.password = req.body.password;
             if(req.body.role) newUser.role = req.body.role;
-            console.log(newUser);
             
             newUser.validate(function(error){
                 if(error){

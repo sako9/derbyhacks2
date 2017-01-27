@@ -21,7 +21,6 @@ module.exports = {
                     "message" : "Unauthorized"
                 });
             }else{
-                console.log("hey");
                 var query = Application.find({});
                 query.exec(function(err, apps){
                     if(err) res.send(err);
@@ -87,7 +86,6 @@ module.exports = {
                                         }
                                       });
                                       email.send(false);
-                                    console.log("this happend")
                                 });
                                return res.status(200).json({
                                     _id: user._id,
@@ -178,7 +176,6 @@ module.exports = {
                 Application.findByIdAndUpdate(user._application, req.body, {new: true})
                 .exec((err, application) =>{
                     if (err) return res.status(500).send(err);
-                    console.log(req.body.status);
                     if(req.body.status == 'approved'){
                         //Send Acceptance email
                         new Email({
