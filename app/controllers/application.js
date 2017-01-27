@@ -178,7 +178,7 @@ module.exports = {
                 Application.findByIdAndUpdate(user._application, req.body, {new: true})
                 .exec((err, application) =>{
                     if (err) return res.status(500).send(err);
-                    if(req.body.status == this._APPROVED){
+                    if(req.body.status == 'approved'){
                         //Send Acceptance email
                         new Email({
                             subject: 'You\'ve been accepted to DerbyHacks!',
@@ -187,7 +187,7 @@ module.exports = {
                                 emails:[user.email]
                             }
                         }).send();
-                    }else if (req.body.status == this._WAITLISTED){
+                    }else if (req.body.status == "waitlisted"){
                         //Send waitlist email
                         new Email({
                             subject: 'You have been waitlisted',
@@ -196,7 +196,7 @@ module.exports = {
                                 emails:[user.email]
                             }
                         }).send();
-                    }else if (req.body.status == this._DENIED){
+                    }else if (req.body.status == "denied"){
                         //Send rejection email
                         new Email({
                             subject: 'You\re application status',
@@ -222,8 +222,8 @@ module.exports = {
                         email: user.email,
                         role: user.role,
                         created: user.created,
-                        _application :application,
-                        req : req.body
+                        _application :application
+                        
                     };
                     return res.status(200).json(response);
                     
