@@ -23,8 +23,8 @@ module.exports = {
         if (!users || !users.length) return res.send('No attendees match that query');
         var list = users.map((user) => {
           return {
-            'FirstNmae': user._application.FirstName || '',
-            'LastName' : user._application.LastName || '',
+            'FirstNmae': user._application.firstName || '',
+            'LastName' : user._application.lastName || '',
             'Email': user.email || '',
             'Phone': user._application.phone || '',
             'School': user._application.school || '',
