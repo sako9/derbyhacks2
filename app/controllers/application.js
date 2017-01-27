@@ -178,6 +178,7 @@ module.exports = {
                 Application.findByIdAndUpdate(user._application, req.body, {new: true})
                 .exec((err, application) =>{
                     if (err) return res.status(500).send(err);
+                    console.log(req.body.status);
                     if(req.body.status == 'approved'){
                         //Send Acceptance email
                         new Email({
@@ -186,7 +187,7 @@ module.exports = {
                             recipients: {
                                 emails:[user.email]
                             }
-                        }).send();
+                        }).send(false);
                     }else if (req.body.status == "waitlisted"){
                         //Send waitlist email
                         new Email({
