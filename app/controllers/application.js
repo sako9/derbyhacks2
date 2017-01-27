@@ -222,7 +222,8 @@ module.exports = {
                         email: user.email,
                         role: user.role,
                         created: user.created,
-                        _application :application
+                        _application :application,
+                        req : req.body
                     };
                     return res.status(200).json(response);
                     
