@@ -10,6 +10,7 @@ module.exports = function (router) {
     var application = require('./controllers/application');
     var stats = require('./controllers/stats');
     var email = require('./controllers/email');
+    var tool = require('./controllers/tools');
     
     /*
     Routes
@@ -40,12 +41,16 @@ module.exports = function (router) {
     router.delete('/emails/:id', auth, email.delete);
     
     // stats
-  router.get('/stats/registrations',  stats.registrations);
-  router.get('/stats/shirts',  stats.shirts);
-  router.get('/stats/dietary',  stats.dietary);
-  router.get('/stats/gender',  stats.gender);
-  router.get('/stats/schools',  stats.schools);
-  router.get('/stats/count',  stats.count);
+      router.get('/stats/registrations',  stats.registrations);
+      router.get('/stats/shirts',  stats.shirts);
+      router.get('/stats/dietary',  stats.dietary);
+      router.get('/stats/gender',  stats.gender);
+      router.get('/stats/schools',  stats.schools);
+      router.get('/stats/count',  stats.count);
+    
+    // tools
+    router.get('/export/attendees', tool.attendees);
+    router.get('/export/resumes',tool.resumes)
 
 
     
