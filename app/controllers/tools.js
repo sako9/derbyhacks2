@@ -65,7 +65,7 @@ module.exports = {
         }).map((application) => {
 
           // normalize file names
-          var newName = titleCase(application.firstName).replace(/\s/g, '');
+          var newName = titleCase(application.firstName).replace(/\s/g, '') + titleCase(application.lastName).replace(/\s/g, '');
           return {
             path: application.resume,
             name: newName 
