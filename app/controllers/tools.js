@@ -56,7 +56,7 @@ module.exports = {
   resumes: (req, res) => {
     Application
       .find(req.query)
-      .select('resume firstName')
+      .select('resume firstName lastName')
       .exec((err, applications) => {
         if (err) return res.internalError();
 
