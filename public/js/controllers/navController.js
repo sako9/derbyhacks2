@@ -20,6 +20,11 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
             });
     }
     
+    if($scope.application.going){
+        $("#going").show();
+        $("#notgoing").hide();
+    }
+    
     $scope.getApp = function(){
         var headers = { Authorization: 'Bearer '+ authentication.getToken() };
         $http.get('/v1.0/api/application',{ headers: headers })
