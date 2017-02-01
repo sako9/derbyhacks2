@@ -54,7 +54,7 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
                 if(data.error){
                    alert(data.error);
                 }else{
-                    $scope.application = data;
+                    $scope.application.going = data.going;
                 }
             })
             .error(function(data){

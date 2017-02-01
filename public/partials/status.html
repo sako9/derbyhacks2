@@ -7,7 +7,7 @@
                 <div class="card-block">
                     <p class="card-text text-xs-center" ng-switch-when="approved">You have been accepted to DerbyHacks!</p>
                     <p class="card-text text-xs-center" ng-if="application.going">You've already RSVP'd. We'll see you at the Hackathon!</p>
-                    <p class="card-text text-xs-center" ng-if="!application.going">So we can get accurate numbers please <a href class="btn btn-primary" ng-click="rsvp()">RSVP</a>.</p>
+                    <p class="card-text text-xs-center" ng-if="!application.going">So we can get accurate numbers please <a href ng-click="rsvp()">RSVP</a>.</p>
                     
                 </div>
                 <p class="card-text text-xs-center" ng-switch-when="waitlisted">You have been Waitlisted. We've received a lot of applications this year and we can't accept everyone. If a spot opens up we'll let you know.</p>
