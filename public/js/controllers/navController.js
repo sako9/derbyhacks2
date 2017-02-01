@@ -31,7 +31,7 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
                 }
             })
             .error(function(data){
-            });
+        });
     }
     
     if(!authentication.isLoggedIn()){
@@ -46,4 +46,25 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
         }
     }
     
+    $scope.rsvp = function(){
+        $scope.application.going = !$scope.application.going;
+        var headers = { Authorization: 'Bearer '+ authentication.getToken() };
+        $http.patch('/v1.0/api/application', $scope.application,{ headers: headers })
+            .success(function(data){
+                if(data.error){
+                   alert(data.error);
+                }else{
+                    $scope.application = data;
+                }
+            })
+            .error(function(data){
+        });
+    }
+    
+});
+
+navCtrlfilter('capitalize', function() {
+    return function(s) {
+      return (angular.isString(s) && s.length > 0) ? s[0].toUpperCase() + s.substr(1).toLowerCase() : s;
+    }
 });

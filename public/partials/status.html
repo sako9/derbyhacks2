@@ -3,8 +3,13 @@
             <h3>Dash</h3>
         </div>
         <div class="card-block" ng-switch on ="application.status">
-            <h4 class="card-title text-xs-center" style= " font-weight: bold;">Application status : {{application.status}}</h4>
-                <p class="card-text text-xs-center" ng-switch-when="approved">You have been accepted to DerbyHacks!</p>
+            <h4 class="card-title text-xs-center" style= " font-weight: bold;">Application status : {{application.status | capitalize}}</h4>
+                <div class="card-block">
+                    <p class="card-text text-xs-center" ng-switch-when="approved">You have been accepted to DerbyHacks!</p>
+                    <p class="card-text text-xs-center" ng-if="application.going">You've already RSVP'd. We'll see you at the Hackathon!</p>
+                    <p class="card-text text-xs-center" ng-if="!application.going">So we can get accurate numbers please <a href class="btn btn-primary" ng-click="rsvp()">RSVP</a>.</p>
+                    
+                </div>
                 <p class="card-text text-xs-center" ng-switch-when="waitlisted">You have been Waitlisted. We've received a lot of applications this year and we can't accept everyone. If a spot opens up we'll let you know.</p>
                 <p class="card-text text-xs-center" ng-switch-when="denied">We regret to inform you that we are unable to offer you a spot this year.nWe've received a lot of applications and we can't accept everyone.</p>
             <div class="text-xs-center" style="margin-top:5rem"> 
