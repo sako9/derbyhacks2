@@ -4,8 +4,8 @@
         </div>
         <div class="card-block" ng-switch on ="application.status">
             <h4 class="card-title text-xs-center" style= " font-weight: bold;">Application status : {{application.status | capitalize}}</h4>
-                <div class="card-block">
-                    <p class="card-text text-xs-center" ng-switch-when="approved">You have been accepted to DerbyHacks!</p>
+                <div class="card-block" ng-switch-when="approved">
+                    <p class="card-text text-xs-center" >You have been accepted to DerbyHacks!</p>
                     <p class="card-text text-xs-center" ng-if="application.going">You've already RSVP'd. We'll see you at the Hackathon!</p>
                     <p class="card-text text-xs-center" ng-if="!application.going">So we can get accurate numbers please <a href ng-click="rsvp()">RSVP</a>.</p>
                     
