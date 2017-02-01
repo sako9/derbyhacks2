@@ -55,6 +55,8 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
                    alert(data.error);
                 }else{
                     $scope.application.going = data.going;
+                    $("#going").show();
+                    $("#notgoing").hide();
                 }
             })
             .error(function(data){
