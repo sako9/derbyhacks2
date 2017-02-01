@@ -188,7 +188,7 @@ module.exports = {
                     }else if (req.body.status == "waitlisted"){
                         //Send waitlist email
                         new Email({
-                            subject: 'You have been waitlisted',
+                            subject: 'DerbyHacks application status',
                             body: 'Dear ' + application.firstName + ' \n\n We’ve received more applicants this year than we can really afford to put into one space. As of right now we’ve put you on the waiting list. We’re sorry that we can’t confirm you a spot, but we will be sending out more acceptances as spots open up. We hope that we do get a chance to see you at DerbyHacks 2 or a future DerbyHacks event as we grow.\n\n Still, finding opportunities to turn your hacks into hacks for civic good within Louisville and other cities is a great cause; so wherever you find yourself February 24th-26th, or any weekend for that matter, #MakeYourCity.<br> Good Luck<br> DerbyHacks Team',
                             recipients: {
                                 emails:[user.email]
@@ -197,7 +197,7 @@ module.exports = {
                     }else if (req.body.status == "denied"){
                         //Send rejection email
                         new Email({
-                            subject: 'You\re application status',
+                            subject: 'DerbyHacks application status',
                             body:'Dear ' + application.firstName + ' \n\n It is with sadness in our hearts that we inform you that we can’t invite you to DerbyHacks this year. We worked hard and are trying to accommodate as large a number of students at DerbyHacks 2 as we can, but there are limits, both in our space and our funding. We hope that you still find yourself making and hacking February 24th-26th (I hear HackIllinois has opened up registrations for that weekend). Regardless wherever you are and whatever you’re doing that weekend, #MakeYourCity.\n\n Sincerely<br> DerbyHacks Team',
                             recipients: {
                                 emails:[user.email]
