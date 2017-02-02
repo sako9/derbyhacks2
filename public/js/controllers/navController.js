@@ -60,13 +60,13 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
                    alert(data.error);
                 }else{
                     $scope.application.going = data.application.going;
-                    if(data.application.going){
+                    /*if(data.application.going){
                         $("#going").show();
                         $("#notgoing").hide();
                     }else{
                         $("#going").hide();
                         $("#notgoing").show();
-                    }
+                    }*/
                 }
             })
             .error(function(data){
