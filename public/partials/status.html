@@ -6,7 +6,7 @@
             <h4 class="card-title text-xs-center" style= " font-weight: bold;">Application status : {{application.status | capitalize}}</h4>
                 <div class="card-block" ng-switch-when="approved">
                     <p class="card-text text-xs-center" >You have been accepted to DerbyHacks!</p>
-                    <p id="going" class="card-text text-xs-center" style="display:none;" >You've already RSVP'd. We'll see you at the Hackathon!</p>
+                    <p id="going" class="card-text text-xs-center" style="display:none;" >You've already RSVP'd. We'll see you at the Hackathon! If for some reason you can't go<a href ng-click="rsvp()">UNRSVP</a>.</p>
                     <p id ="notgoing" class="card-text text-xs-center">So we can get accurate numbers please <a href ng-click="rsvp()">RSVP</a>.</p>
                     
                 </div>
