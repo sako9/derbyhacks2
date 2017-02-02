@@ -59,8 +59,8 @@ navCtrl.controller('navController',function($scope,$http,$state,$location, authe
                 if(data.error){
                    alert(data.error);
                 }else{
-                    $scope.application.going = data.going;
-                    if(data.going){
+                    $scope.application.going = data.application.going;
+                    if(data.application.going){
                         $("#going").show();
                         $("#notgoing").hide();
                     }else{
