@@ -205,15 +205,15 @@ module.exports = {
                         }).send(false);
                     }
                     
-                    if(req.body.checked){
+                    /*if(req.body.checked){
                         new Email({
-                            subject:'Welcome to derby hacks',
+                            subject:'Welcome to DerbyHacks',
                             body: "# Welcome to derby hacks!",
                             recipients: {
                                 emails:[user.email]
                             }
                         }).send(false);
-                    }
+                    }*/
                     
                     var response = {
                         _id: user._id,
