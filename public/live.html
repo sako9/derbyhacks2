@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="assets/lib/compiled/flipclock.min.js"></script>
+    <script src="app/app.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="assets/css/test.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap-horizon.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/lib/compiled/flipclock.css"/>
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+       <div class="row">
+            <div class="col-md-12">
+                <h1 id="clock-label" class="text-center">Hacking begins in:</h1>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="flip-clock">
+              <div class="clock" style="margin:2em;"></div>
+              <div class="message"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="section">
+       <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Announcements</h1>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-12" style="height:300px; overflow: scroll; border-top: 1px solid black;border-bottom: 1px solid black;">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-header">Soylent pong has begun!</h4>
+                        <p class="list-group-item-text">Come join us in the workshop room</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+       </div>
+   </div>-->
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Agenda</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h1 class="text-center">Friday</h1>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h4>6:30pm -8:00pm Checkin</h4>
+              </li>
+              <li class="list-group-item">8:00pm-8:30pm Opening Ceremonies</li>
+              <li class="list-group-item">8:30pm-9:00pm Group Formation Activity</li>
+              <li class="list-group-item">9:00pm HACKING BEGINS</li>
+              <li class="list-group-item">10:00pm-11:00pm &nbsp;Arduino Workshop(Max 20)</li>
+              <li class="list-group-item">11:00pm-12:00am Family Fued Funtivity&nbsp;</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h1 class="text-center">Saturday</h1>
+            <ul class="list-group">
+              <li class="list-group-item">12:00am-1:00am Midnight Snack</li>
+              <li class="list-group-item">6:00am-7:00am Yoga</li>
+              <li class="list-group-item">7:00am-8:00am Breakfast</li>
+              <li class="list-group-item">8:00am-9:30am WebDev Workshop</li>
+              <li class="list-group-item">10:00am-11:00am Open Data Workshop</li>
+              <li class="list-group-item">12:00pm-1:00pm Lunch</li>
+              <li class="list-group-item">2:00pm-3:00pm KFC Workshop</li>
+              <li class="list-group-item">3:00pm-4:00pm KSTC Workshop</li>
+              <li class="list-group-item">3:00pm-4:00pm KFC Workshop 2</li>
+              <li class="list-group-item">5:00pm-6:00pm Code Race Funtivity</li>
+              <li class="list-group-item">7:00pm-8:00pm Dinner</li>
+              <li class="list-group-item">8:00pm-9:00pm Soylet Pong Funtivity</li>
+              <li class="list-group-item">10:00pm-11:00pm Ta for a Day Funtivity</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h1 class="text-center">Sunday</h1>
+            <ul class="list-group">
+              <li class="list-group-item">6:00am-7:00am Yoga
+              <li class="list-group-item">7:00am-8:00am Breakfast</li>
+              <li class="list-group-item">10:00am-12:00pm Judging Begins</li>
+              <li class="list-group-item">12:00pm-1:00pm Closing Ceremonies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Categories/Prizes</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"> Day See Me Hacking</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Best hack for a smart city. Bonus points for incorporating open data.
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"> Home is Where the Hack is</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Best integration of smart city and the home
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" >The Shayne Memorial</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Best useless hack
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"> Hack to the Heart (and You're Too Late)</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Best health-related hack
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"> Let's Get Technical, Technical</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Hack that demonstrates the most challenging and well-executed technical proficiency
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">FirstBuild Prize (Build Me Up) (3)</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Best appliance or home related projects, judged by FirstBuild staff members
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"> American Showman (SHOW ME WHAT YOU GOOOOOOOT)</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Best restaurant-related hack
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">#LetMeTakeASelfie</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Best social media post over the 36-hour period using the hashtag #makeyourcity
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">#HackHarassment</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Use your tech skills for good and hack online harassment. Build a software solution that can help reduce the frequency and/or severity of online harassment. Win HackHarassment Power Bank.
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">  Amazon Web Services - Best Use of AWS</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Win $250 AWS credit
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Best Domain Name from Domain.com</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Win Domain.com swag bags
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Most potential value for the world / biggest market</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                     free passes to Louisville Startup Weekend (April 7-9) and Heine Brother's gift cards.
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">First</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    Google Homes
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Second</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                    RC QuadCopters
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Third</h3>
+                  </div>
+                  <div class="panel-body" style="background:white;">
+                     Special Pi3 Kit
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Social Media</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <a class="twitter-timeline" data-height="1012" href="https://twitter.com/DerbyHacks17">Tweets by DerbyHacks17</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+          <div class="col-md-6 text-center">
+            <iframe src="//users.instush.com/bee-gallery-v2/?cols=2&rows=5&size=large&border=10&round=false&space=1&sl=true&bg=transparent&brd=true&na=false&pin=true&hc=e72476&ltc=3f3f3f&lpc=ffffff&fc=ffffff&user_id=3026592009&username=derbyhacks&sid=-1&susername=-1&tag=-1&stype=mine&t=999999y4WZ_zlK7uufcIQBvDEFS787fazbFOlThzgT8EIKUE2Xh7Mnhf07Xl_5ksIvJCPPw5u1lhSAN00" allowtransparency="true" frameborder="0" scrolling="no"  style="display:block;width:406px;height:1012px;margin:auto;border:none;overflow:visible;" ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center text-primary">Team</h1>
+            <p class="text-center">We are a group of skilled individuals.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png" class="center-block img-circle img-responsive">
+            <h3 class="text-center">John Doe</h3>
+            <p class="text-center">Developer</p>
+          </div>
+          <div class="col-md-4">
+            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png" class="center-block img-circle img-responsive">
+            <h3 class="text-center">John Doe</h3>
+            <p class="text-center">Developer</p>
+          </div>
+          <div class="col-md-4">
+            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png" class="center-block img-circle img-responsive">
+            <h3 class="text-center">John Doe</h3>
+            <p class="text-center">Developer</p>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    <script type="text/javascript">
+    var clock;
+    
+    $(document).ready(function() {
+      var clock;
+
+      clock = $('.clock').FlipClock({
+            clockFace: 'DailyCounter',
+            autoStart: false,
+            callbacks: {
+              stop: function() {
+                $('.message').html('The clock has stopped!')
+              }
+            }
+        });
+        console.log(new Date())
+        var now = new Date().getTime()/ 1000;
+        var hacking_begin = new Date("February 24, 2017 21:00:00").getTime()/1000; 
+        var hacking_ends = new Date("February 26, 2017 9:00:00").getTime()/1000;
+        console.log(now,hacking_begin,hacking_ends)
+        if(hacking_begin - now > 0){
+            clock.setTime(hacking_begin - now);
+            clock.setCountdown(true);
+            clock.start();
+        }else if(hacking_ends - now > 0){
+            clock.setTime(hacking_ends - now);
+            clock.setCountdown(true);
+            clock.start();
+            $("#clock-label").text("Hacking Ends in :")
+        }else{
+            clock.setTime(0);
+            clock.setCountdown(true);
+            clock.start();
+        }
+
+    });
+  </script>
+  </body>
+</html>
