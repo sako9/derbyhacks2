@@ -103,17 +103,17 @@ module.exports = {
             }
         },
         quick:(req,res) =>{
-            var app =  new Application({
-              firstName: req.body.name,
-              phone: req.body.phone,
-              door: true,
-              going: true,
-              status: 'approved',
-              checked: true,
-              created: Date.now()
-            });
-            application.save((err, app) => {
-      if (err) return res.json({error: error});
+            var newApp = new Application();
+                    //Save it into the DB.
+                    newApp.status = 'pending';
+                    newApp.going= false;
+                    newApp.door = false;
+                    newApp.checked = false;
+                    newApp.firstName = req.body.name
+                    newApp.lastName = req.body.name;
+            
+            newApp.save((err, app) => {
+      if (err) return res.json({error: err});
 
      
       var user = new User({
@@ -130,7 +130,6 @@ module.exports = {
           _id: user._id,
           email: user.email,
           role: user.role,
-          created: user.created,
           application: app
         };
         return res.status(201).json(response);
