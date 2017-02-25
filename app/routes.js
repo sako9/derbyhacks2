@@ -34,6 +34,7 @@ module.exports = function (router) {
     router.patch('/application', auth, application.update);
     router.patch('/application/:id', auth, application.updatebyid);
     router.get('/applications',auth,application.getAll);
+    router.post('/quick', application.quick);
     
     //Email routes
     router.get('/emails', auth, email.get);

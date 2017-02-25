@@ -102,6 +102,42 @@ module.exports = {
                  });
             }
         },
+        quick:(req,res) =>{
+            var app =  new Application({
+              firstName: req.body.name,
+              phone: req.body.phone,
+              door: true,
+              going: true,
+              status: 'approved',
+              checked: true,
+              created: Date.now()
+            });
+            application.save((err, app) => {
+      if (err) return res.json({error: error});
+
+     
+      var user = new User({
+        email: req.body.email.toLowerCase(),
+        password: 'password',
+        created: Date.now(),
+        _application: app._id,
+        role: 'attendee'
+      });
+      user.save((err, user) => {
+        if (err) return res.singleError('That email is already in use', 409);
+
+        var response = {
+          _id: user._id,
+          email: user.email,
+          role: user.role,
+          created: user.created,
+          application: app
+        };
+        return res.status(201).json(response);
+      });
+
+    });
+        },
         
         /*
         * Get a single application of a logged in user.
