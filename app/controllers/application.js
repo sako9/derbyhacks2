@@ -111,6 +111,15 @@ module.exports = {
                     newApp.checked = false;
                     newApp.firstName = req.body.name
                     newApp.lastName = req.body.name;
+                    newApp.school = "blah";
+                    newApp.major = "blah";
+                    newApp.gender = "blah";
+                    newApp.shirtSize = "Unisex - XS";
+                    newApp.age = 20;
+                    newApp.grade = "blah";
+                    newApp.phone = req.body.phone;
+                    newApp.conduct = true;
+                    newApp.policy = true;
             
             newApp.save((err, app) => {
       if (err) return res.json({error: err});
