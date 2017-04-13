@@ -69,7 +69,7 @@ module.exports = {
           var last = titleCase(application.lastName).replace(/\s/g, '');
           return {
             path: application.resume,
-            name: newName +last
+            name: newName +last +".pdf"
           };
 
         });
